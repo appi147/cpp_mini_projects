@@ -4,15 +4,15 @@
 using namespace std;
 class complex
 {
-	float real;
-	float imaginary;
+	double real;
+	double imaginary;
 	public:
-		complex(float r=0, float i=0)
+		complex(double r=0, double i=0)
 		{
 			real=r;
 			imaginary=i;
 		}
-		float mod(void)
+		double mod(void)
 		{
 			return sqrt(real*real + imaginary*imaginary);
 		}
@@ -24,7 +24,7 @@ class complex
 		complex operator-(complex);
 		friend complex operator*(complex,complex);
 		friend complex operator/(complex,complex);
-		friend complex operator/(complex,float);
+		friend complex operator/(complex,double);
 		void display (void);
 		void input(void);
 };
@@ -57,7 +57,7 @@ complex operator*(complex d,complex c)
 	temp.imaginary = (d.imaginary)*(c.imaginary) + (d.real) * (c.imaginary) ;
 	return (temp);
 }
-complex operator/(complex c,float d)
+complex operator/(complex c,double d)
 {
 	complex temp;
 	temp.real = c.real / d;
@@ -67,7 +67,7 @@ complex operator/(complex c,float d)
 complex operator/(complex c,complex d)
 {
 	complex temp;
-	float t;
+	double t;
 	t = d.mod();
 	d.conjugate();
 	temp = c * d;
@@ -92,7 +92,7 @@ int main()
 	{
 		char choice;
 		complex a,b,c;
-		float z;
+		double z;
 		cout<<"\n\t\t\tEnter any choice\n\t\t\t\t";
 		choice=getchar();
 		switch(choice)
