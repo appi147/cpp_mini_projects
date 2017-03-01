@@ -47,7 +47,7 @@ complex complex::operator-(complex c)
 {
 	complex temp;
 	temp.real = this->real- c.real;
-	temp.real = this->imaginary - c.imaginary;
+	temp.imaginary = this->imaginary - c.imaginary;
 	return (temp);
 }
 complex operator*(complex d,complex c)
