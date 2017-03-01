@@ -80,7 +80,7 @@ complex operator / ( complex c , complex d )
 	return ( temp );
 }
 
-void list(void)
+void list ( void )
 {
 	cout << "\n\t\t\t\t1. Mod\n\t\t\t\t2. Add\n\t\t\t\t3. Subtract\n\t\t\t\t";
 	cout << "4. Multiply\n\t\t\t\t5. Divide\n\t\t\t\t6. Conjugate\n\t\t\t\t7. Exit\n\t\tPress any other button to reproduce this menu\n";
