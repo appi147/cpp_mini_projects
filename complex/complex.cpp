@@ -4,21 +4,21 @@
 using namespace std;
 class complex
 {
-	float x;
-	float y;
+	float real;
+	float imaginary;
 	public:
-		complex(float real=0, float imag=0)
+		complex(float r=0, float i=0)
 		{
-			x=real;
-			y=imag;
+			real=r;
+			imaginary=i;
 		}
 		float mod(void)
 		{
-			return sqrt(x*x + y*y);
+			return sqrt(real*real + imaginary*imaginary);
 		}
 		void conjugate(void)
 		{
-			y = -y;
+			imaginary = -imaginary;
 		}
 		complex operator+(complex);
 		complex operator-(complex);
@@ -32,36 +32,36 @@ class complex
 void complex::input(void)
 {
 	cout<<"\nEnter real part : ";
-	cin>>x;
+	cin>>real;
 	cout<<"\nEnter imag part : ";
-	cin>>y;
+	cin>>imaginary;
 }
 complex complex::operator+(complex c)
 {
 	complex temp;
-	temp.x = x+ c.x;
-	temp.y = y + c.y;
+	temp.real = this->real+ c.real;
+	temp.imaginary = this->imaginary + c.imaginary;
 	return (temp);
 }
 complex complex::operator-(complex c)
 {
 	complex temp;
-	temp.x = (*this).x- c.x;
-	temp.y = y - c.y;
+	temp.real = this->real- c.real;
+	temp.real = this->imaginary - c.imaginary;
 	return (temp);
 }
 complex operator*(complex d,complex c)
 {
 	complex temp;
-	temp.x = d.x* c.x-d.y*c.y;
-	temp.y = d.y*c.x + d.x * c.y ;
+	temp.real = (d.real)* (c.real)-(d.imaginary)*(c.imaginary);
+	temp.imaginary = (d.imaginary)*(c.imaginary) + (d.real) * (c.imaginary) ;
 	return (temp);
 }
 complex operator/(complex c,float d)
 {
 	complex temp;
-	temp.x = c.x / d;
-	temp.y = c.y / d; 
+	temp.real = c.real / d;
+	temp.imaginary = c.imaginary / d; 
 	return (temp);
 }
 complex operator/(complex c,complex d)
@@ -77,7 +77,7 @@ complex operator/(complex c,complex d)
 }
 void complex::display(void)
 {
-	cout << x << " + j"<<y;
+	cout << real << " + j"<<imaginary;
 }
 void list(void)
 {
