@@ -7,30 +7,28 @@ class complex
 	double real;
 	double imaginary;
 	public:
-		complex(double r=0, double i=0)
+		complex (double r=0, double i=0)
 		{
 			real=r;
 			imaginary=i;
 		}
-		double mod(void)
+		double mod (void)
 		{
-			return sqrt(real*real + imaginary*imaginary);
+			return sqrt((real*real) + (imaginary*imaginary));
 		}
 		void conjugate(void)
 		{
 			imaginary = -imaginary;
 		}
-		complex operator+(complex);
-		complex operator-(complex);
-		complex operator<<(complex);
-		complex operator>>(complex);
-		friend complex operator*(complex,complex);
-		friend complex operator/(complex,complex);
-		friend complex operator/(complex,double);
-		void display (void);
-		void input(void);
+		complex operator + (complex);
+		complex operator - (complex);
+		friend ostream& operator<<(ostream& os, const complex& c);
+		friend istream& operator>>(istream& os, const complex& c); 
+		friend complex operator * (complex,complex);
+		friend complex operator / (complex,complex);
+		friend complex operator / (complex,double);
 };
-
+/*
 void complex::input(void)
 {
 	cout<<"\nEnter real part : ";
@@ -38,16 +36,21 @@ void complex::input(void)
 	cout<<"\nEnter imag part : ";
 	cin>>imaginary;
 }
-complex complex::operator>>(complex c)
+void complex::display(void)
 {
-	cin>>c.real>>c.imaginary;
+	cout << real << " +j"<<imaginary;
 }
-complex complex::operator<<(complex c)
-{
-	cout<<c.real;
-	cout<<((c.imaginary>=0)?"+j":"-j");
-	cout<<abs(c.imaginary);
-}
+*/
+ostream& operator<<(ostream& os, const complex& c)  
+{  
+    os<<c.real<<"+j"<<c.imaginary;
+    return os; 
+}  
+istream& operator>>(istream& is, const complex& c)  
+{  
+    is>>c.real>>c.imaginary; 
+    return is; 
+}  
 complex complex::operator+(complex c)
 {
 	complex temp;
@@ -87,10 +90,7 @@ complex operator/(complex c,complex d)
 	temp = temp / t;
 	return (temp);
 }
-void complex::display(void)
-{
-	cout << real << " + j"<<imaginary;
-}
+
 void list(void)
 {
 	cout<<"\n\t\t\t\t1. Mod\n\t\t\t\t2. Add\n\t\t\t\t3. Subtract\n\t\t\t\t";
@@ -100,7 +100,7 @@ int main()
 {
 	cout<<"\t\t\t\tHi Everyone!\n\t\tThis program can do following operations on complex numbers\n";
 	list();
-	while(1)
+	while(true)
 	{
 		char choice;
 		complex a,b,c;
@@ -110,40 +110,36 @@ int main()
 		switch(choice)
 		{
 			case ('1'):
-				a.input();
+				cin>>a;
 				z=a.mod();
-				cout<<"Mod of ";a.display();cout<<"is "<<z<<endl;
+				cout<<"Mod of "<<a<<"is "<<z<<endl;
 				break;
 			case ('2'):
-				a.input();
-				b.input();
+				cin>>a>>b;
 				c=a+b;
-				cout<<"Addition of ";a.display();cout<<" and ";b.display();cout<<" is ";c.display();cout<<endl;
+				cout<<"Addition of "<<a<<" and "<<b<<" is "<<c<<endl;
 				break;
 			case ('3'):
-				a.input();
-				b.input();
+				cin>>a>>b;
 				c=a-b;
-				cout<<"Subtraction of ";a.display();cout<<" by ";b.display();cout<<" is ";c.display();cout<<endl;
+				cout<<"Subtraction of "<<a<<" by "<<b<<" is "<<c<<endl;
 				break;
 			case ('4'):
-				a.input();
-				b.input();
+				cin>>a>>b;
 				c=a*b;
-				cout<<"Multiplication of ";a.display();cout<<" and ";b.display();cout<<" is ";c.display();cout<<endl;
+				cout<<"Multiplication of "<<a<<" and "<<b<<" is "<<c<<endl;
 				break;
 			case ('5'):
-				a.input();
-				b.input();
+				cin>>a>>b;
 				c=a/b;
-				cout<<"Division of ";a.display();cout<<" by ";b.display();cout<<" is ";c.display();cout<<endl;
+				cout<<"Division of "<<a<<" by "<<b<<" is "<<c<<endl;
 				break;
 			case ('6'):
-				a.input();
-				cout<<"Conjugate of ";a.display();a.conjugate();cout<<"is ";a.display();cout<<endl;
+				cin>>a;
+				cout<<"Conjugate of "<<a;a.conjugate();cout<<" is "<<a<<endl;
 				break;
 			case('7'):
-				exit(007);
+				exit(0);
 			default:
 				list();
 				break;
