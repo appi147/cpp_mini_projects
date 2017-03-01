@@ -22,6 +22,8 @@ class complex
 		}
 		complex operator+(complex);
 		complex operator-(complex);
+		complex operator<<(complex);
+		complex operator>>(complex);
 		friend complex operator*(complex,complex);
 		friend complex operator/(complex,complex);
 		friend complex operator/(complex,double);
@@ -35,6 +37,16 @@ void complex::input(void)
 	cin>>real;
 	cout<<"\nEnter imag part : ";
 	cin>>imaginary;
+}
+complex complex::operator>>(complex c)
+{
+	cin>>c.real>>c.imaginary;
+}
+complex complex::operator<<(complex c)
+{
+	cout<<c.real;
+	cout<<((c.imaginary>=0)?"+j":"-j");
+	cout<<abs(c.imaginary);
 }
 complex complex::operator+(complex c)
 {
