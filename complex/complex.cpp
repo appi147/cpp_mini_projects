@@ -28,19 +28,6 @@ class complex
 		friend complex operator / (complex,complex);
 		friend complex operator / (complex,double);
 };
-/*
-void complex::input(void)
-{
-	cout<<"\nEnter real part : ";
-	cin>>real;
-	cout<<"\nEnter imag part : ";
-	cin>>imaginary;
-}
-void complex::display(void)
-{
-	cout << real << " +j"<<imaginary;
-}
-*/
 ostream& operator<<(ostream& os, const complex& c)  
 {  
     os<<c.real<<"+j"<<c.imaginary;
