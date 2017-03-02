@@ -1,0 +1,5 @@
+encrypt takes file name as an argument which must be present in the same folder as the program. 
+Then, key is given as input, which is used to encrypt the text present in the given file name.
+Encrypted text is written in encrypted.txt as well as key is written in key.txt.
+decrypt is used to decrypt encrypted .txt using same key which was used to encrypt.
+All the files must be present in same folder.
